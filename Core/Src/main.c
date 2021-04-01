@@ -27,9 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include "retarget.h"
-
-#include "vl53l0x_api.h"
-#include "vl53l0x_platform.h"
+#include "lib_vl53l0x.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,58 +99,20 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   VL53L0X_Dev_t dev;
-  VL53L0X_DeviceInfo_t VL53L0X_DeviceInfo;
-  VL53L0X_RangingMeasurementData_t VL53L0X_RangingMeasurementData;
-  uint8_t status = VL53L0X_ERROR_NONE;
-  uint8_t data_ready = 0;
+  uint8_t status = 0;
 
   dev.I2cHandle = &hi2c1;
   dev.I2cDevAddr = 0x52;
   dev.comms_speed_khz = 400;
   dev.comms_type = 1;
 
-  VL53L0X_GetDeviceInfo(&dev, &VL53L0X_DeviceInfo);
-  printf("Name = %s\r\n",VL53L0X_DeviceInfo.Name);
-  printf("Type = %s\r\n",VL53L0X_DeviceInfo.Type);
-  printf("ProductId = %s\r\n",VL53L0X_DeviceInfo.ProductId);
-  printf("ProductType = %d\r\n",VL53L0X_DeviceInfo.ProductType);
-  printf("ProductRevisionMajor = %d\r\n",VL53L0X_DeviceInfo.ProductRevisionMajor);
-  printf("ProductRevisionMinor = %d\r\n",VL53L0X_DeviceInfo.ProductRevisionMinor);
-
-  status = VL53L0X_DataInit(&dev);
-  printf("DataInit() : %d\r\n",status);
-
-  status = VL53L0X_StaticInit(&dev);
-  printf("StaticInit() : %d\r\n",status);
-
-  uint32_t refSpadCount;
-  uint8_t isApertureSpads;
-  status = VL53L0X_PerformRefSpadManagement(&dev, &refSpadCount, &isApertureSpads);
-  printf("PerformRefSpadManagement() : %d\r\n",status);
-
-  int32_t OffsetCalibrationDataMicroMeter = 0;
-  status = VL53L0X_SetOffsetCalibrationDataMicroMeter(&dev, OffsetCalibrationDataMicroMeter);
-  printf("SetOffsetCalibrationDataMicroMeter() : %d\r\n",status);
-
-  FixPoint1616_t XTalkCompensationRateMegaCps = 0;
-  status = VL53L0X_SetXTalkCompensationRateMegaCps(&dev, XTalkCompensationRateMegaCps);
-  printf("SetXTalkCompensationRateMegaCps() : %d\r\n",status);
-
-  status = VL53L0X_SetDeviceMode(&dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING);
-  printf("StaticInit() : %d\r\n",status);
-
-  status = VL53L0X_StartMeasurement(&dev);
-  printf("StartMeasurement() : %d\r\n",status);
+  if(1 == (status = vl53l0x_Initialization(&dev))){
+	  //printf("Error vl53l0x_Initialization() : %d\r\n",status);
+  }
 
   while (1)
   {
-	  do{
-		  status = VL53L0X_GetMeasurementDataReady(&dev, &data_ready);
-	  } while(data_ready != 1);
-
-	status = VL53L0X_GetRangingMeasurementData(&dev, &VL53L0X_RangingMeasurementData);
-	printf("Distance = %d\r\n",VL53L0X_RangingMeasurementData.RangeMilliMeter);
-
+	  printf("Distance : %d\r\n",vl53l0x_PerformRangingMeasurement(&dev));
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

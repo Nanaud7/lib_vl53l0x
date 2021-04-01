@@ -1,0 +1,3 @@
+lib_vl53l0x.c:10:9:vl53l0x_Initialization	48	static
+lib_vl53l0x.c:136:9:vl53l0x_PerformMeasurement	24	static
+lib_vl53l0x.c:156:10:vl53l0x_PerformRangingMeasurement	48	static

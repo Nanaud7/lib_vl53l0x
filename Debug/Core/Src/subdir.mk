@@ -6,6 +6,7 @@
 C_SRCS += \
 ../Core/Src/gpio.c \
 ../Core/Src/i2c.c \
+../Core/Src/lib_vl53l0x.c \
 ../Core/Src/main.c \
 ../Core/Src/retarget.c \
 ../Core/Src/stm32f4xx_hal_msp.c \
@@ -17,6 +18,7 @@ C_SRCS += \
 OBJS += \
 ./Core/Src/gpio.o \
 ./Core/Src/i2c.o \
+./Core/Src/lib_vl53l0x.o \
 ./Core/Src/main.o \
 ./Core/Src/retarget.o \
 ./Core/Src/stm32f4xx_hal_msp.o \
@@ -28,6 +30,7 @@ OBJS += \
 C_DEPS += \
 ./Core/Src/gpio.d \
 ./Core/Src/i2c.d \
+./Core/Src/lib_vl53l0x.d \
 ./Core/Src/main.d \
 ./Core/Src/retarget.d \
 ./Core/Src/stm32f4xx_hal_msp.d \
@@ -42,6 +45,8 @@ Core/Src/gpio.o: ../Core/Src/gpio.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gpio.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/i2c.o: ../Core/Src/i2c.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/i2c.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/lib_vl53l0x.o: ../Core/Src/lib_vl53l0x.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/lib_vl53l0x.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/main.o: ../Core/Src/main.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"E:/ARNAUD/Arnaud 3.0/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/retarget.o: ../Core/Src/retarget.c
