@@ -17,13 +17,20 @@
 #include "vl53l0x_device.h"
 
 /* #define */
-//#define GET_DEVICE_INFO
+#define RANGE_PROFILE_SELECTED HIGH_ACCURACY
 #define HIGH_ACCURACY 0
 #define LONG_RANGE 1
 #define HIGH_SPEED 2
 
 /* Prototypes */
-uint8_t vl53l0x_Initialization(VL53L0X_Dev_t* dev);
+uint8_t vl53l0x_Initialization_Flow(VL53L0X_Dev_t* dev);
+uint8_t vl53l0x_Device_Initialization(VL53L0X_Dev_t* dev);
+uint8_t vl53l0x_Calibration_Data_Load(VL53L0X_Dev_t* dev);
+uint8_t vl53l0x_System_Settings(VL53L0X_Dev_t* dev);
+uint8_t vl53l0x_Range_Profiles(VL53L0X_Dev_t* dev);
+
+uint8_t vl53l0x_Manufacturing_Calibration(VL53L0X_Dev_t* dev);
+
 uint8_t vl53l0x_PerformMeasurement(VL53L0X_Dev_t* dev, VL53L0X_RangingMeasurementData_t* VL53L0X_RangingMeasurementData);
 uint16_t vl53l0x_PerformRangingMeasurement(VL53L0X_Dev_t* dev);
 

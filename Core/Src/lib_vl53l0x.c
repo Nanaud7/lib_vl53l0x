@@ -7,20 +7,26 @@
 
 #include "lib_vl53l0x.h"
 
-uint8_t vl53l0x_Initialization(VL53L0X_Dev_t* dev){
-	uint8_t rangingConfig = HIGH_ACCURACY;
-	uint8_t status = VL53L0X_ERROR_NONE;
-    uint8_t VhvSettings;
-    uint8_t PhaseCal;
-    uint32_t refSpadCount;
-	uint8_t isApertureSpads;
-	FixPoint1616_t signalLimit = (FixPoint1616_t)(0.25*65536);
-	FixPoint1616_t sigmaLimit = (FixPoint1616_t)(18*65536);
-	uint32_t timingBudget = 33000;
-	uint8_t preRangeVcselPeriod = 14;
-	uint8_t finalRangeVcselPeriod = 10;
+uint8_t vl53l0x_Initialization_Flow(VL53L0X_Dev_t* dev){
+	// Device initialization
+	vl53l0x_Device_Initialization(dev);
 
-	// DataInit()
+	// Calibration data loading
+	vl53l0x_Calibration_Data_Load(dev);
+
+	// System settings
+	vl53l0x_System_Settings(dev);
+
+	// Start Measurement
+	VL53L0X_StartMeasurement(dev);
+
+	return 0;
+}
+
+uint8_t vl53l0x_Device_Initialization(VL53L0X_Dev_t* dev){
+	uint8_t status = VL53L0X_ERROR_NONE;
+
+	// DataInit
 	if(VL53L0X_ERROR_NONE != (status = VL53L0X_DataInit(dev))){
 		printf("Error DataInit() : %d\r\n",status);
 		return 1;
@@ -32,39 +38,50 @@ uint8_t vl53l0x_Initialization(VL53L0X_Dev_t* dev){
 		return 1;
 	}
 
-	// Ref (temperature) calibration
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_PerformRefCalibration(dev, &VhvSettings, &PhaseCal))){
-		printf("Error PerformRefCalibration() : %d\r\n",status);
-		return 1;
-	}
+	return 0;
+}
 
+uint8_t vl53l0x_Calibration_Data_Load(VL53L0X_Dev_t* dev){
 	// Reference SPADs
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_PerformRefSpadManagement(dev, &refSpadCount, &isApertureSpads))){
-		printf("Error PerformRefSpadManagement() : %d\r\n",status);
-		return 1;
-	}
+	uint32_t count; uint8_t isApertureSpads;
+	VL53L0X_PerformRefSpadManagement(dev, &count, &isApertureSpads);
+	//VL53L0X_SetReferenceSpads(dev, count, isApertureSpads);
+	//VL53L0X_GetReferenceSpads(dev, &count, &isApertureSpads);
 
+
+	// Ref calibration
+    uint8_t VhvSettings, PhaseCal;
+	VL53L0X_PerformRefCalibration(dev, &VhvSettings, &PhaseCal);
+	//VL53L0X_SetRefCalibration(dev, VhvSettings, PhaseCal);
+
+	// Offset calibration
+
+	// Cross-talk correction
+
+	return 0;
+}
+
+uint8_t vl53l0x_System_Settings(VL53L0X_Dev_t* dev){
 	// Device Mode
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetDeviceMode(dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING))){
-		printf("Error SetDeviceMode() : %d\r\n",status);
-		return 1;
-	}
+	VL53L0X_SetDeviceMode(dev, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING);
 
-	// LimitCheckEnable
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetLimitCheckEnable(dev, VL53L0X_CHECKENABLE_SIGMA_FINAL_RANGE, 1))){
-		printf("Error SetLimitCheckEnable() : %d\r\n",status);
-		return 1;
-	}
+	// Polling and interrupt mode
+	//VL53L0X_SetGpioConfig(dev, Pin, DeviceMode, Functionality, Polarity)
 
+	// API range profiles
+	vl53l0x_Range_Profiles(dev);
 
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetLimitCheckEnable(dev, VL53L0X_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE, 1))){
-		printf("Error SetLimitCheckEnable() : %d\r\n",status);
-		return 1;
-	}
+	return 0;
+}
 
+uint8_t vl53l0x_Range_Profiles(VL53L0X_Dev_t* dev){
+	FixPoint1616_t signalLimit = (FixPoint1616_t)(0.25*65536);
+	FixPoint1616_t sigmaLimit = (FixPoint1616_t)(18*65536);
+	uint32_t timingBudget = 33000;
+	uint8_t preRangeVcselPeriod = 14;
+	uint8_t finalRangeVcselPeriod = 10;
 
-	/* Ranging configuration */
-	switch(rangingConfig) {
+	switch(RANGE_PROFILE_SELECTED) {
 	case LONG_RANGE:
 		signalLimit = (FixPoint1616_t)(0.1*65536);
 		sigmaLimit = (FixPoint1616_t)(60*65536);
@@ -90,58 +107,40 @@ uint8_t vl53l0x_Initialization(VL53L0X_Dev_t* dev){
 		printf("Not Supported");
 	}
 
-	// SetLimitCheckValue
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetLimitCheckValue(dev, VL53L0X_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE, signalLimit))){
-		printf("Error SetLimitCheckEnable() : %d\r\n",status);
-		return 1;
-	}
+	VL53L0X_SetLimitCheckValue(dev, VL53L0X_CHECKENABLE_SIGNAL_RATE_FINAL_RANGE, signalLimit);
+	VL53L0X_SetLimitCheckValue(dev, VL53L0X_CHECKENABLE_SIGMA_FINAL_RANGE, sigmaLimit);
+	VL53L0X_SetMeasurementTimingBudgetMicroSeconds(dev, timingBudget);
+	VL53L0X_SetVcselPulsePeriod(dev, VL53L0X_VCSEL_PERIOD_PRE_RANGE, preRangeVcselPeriod);
+	VL53L0X_SetVcselPulsePeriod(dev, VL53L0X_VCSEL_PERIOD_FINAL_RANGE, finalRangeVcselPeriod);
+}
 
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetLimitCheckValue(dev, VL53L0X_CHECKENABLE_SIGMA_FINAL_RANGE, sigmaLimit))){
-		printf("Error SetLimitCheckEnable() : %d\r\n",status);
-		return 1;
-	}
+uint8_t vl53l0x_Manufacturing_Calibration(VL53L0X_Dev_t* dev){
+	/* Manufacturing calibration flow*/
 
-	// SetMeasurementTimingBudgetMicroSeconds
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetMeasurementTimingBudgetMicroSeconds(dev, timingBudget))){
-		printf("Error SetMeasurementTimingBudgetMicroSeconds() : %d\r\n",status);
-		return 1;
-	}
+	// Device initialization and settings
+	vl53l0x_Device_Initialization(dev);
 
-	// SetVcselPulsePeriod
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetVcselPulsePeriod(dev, VL53L0X_VCSEL_PERIOD_PRE_RANGE, preRangeVcselPeriod))){
-		printf("Error SetVcselPulsePeriod() : %d\r\n",status);
-		return 1;
-	}
+	// SPADs calibration
+	uint32_t refSpadCount; uint8_t isApertureSpads;
+	VL53L0X_PerformRefSpadManagement(dev, &refSpadCount, &isApertureSpads);
 
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_SetVcselPulsePeriod(dev, VL53L0X_VCSEL_PERIOD_FINAL_RANGE, finalRangeVcselPeriod))){
-		printf("Error SetVcselPulsePeriod() : %d\r\n",status);
-		return 1;
-	}
+	// Temperature calibration
+    uint8_t VhvSettings, PhaseCal;
+	VL53L0X_PerformRefCalibration(dev, &VhvSettings, &PhaseCal);
 
-	// PerformRefCalibration
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_PerformRefCalibration(dev, &VhvSettings, &PhaseCal))){
-		printf("Error SetVcselPulsePeriod() : %d\r\n",status);
-		return 1;
-	}
+	// Offset calibration (il faut utiliser un obstacle blanc)
+	FixPoint1616_t CalDistanceMilliMeter; int32_t OffsetMicroMeter;
+	VL53L0X_PerformOffsetCalibration(dev, CalDistanceMilliMeter, &OffsetMicroMeter);
 
-	// Start measurement
-	if(VL53L0X_ERROR_NONE != (status = VL53L0X_StartMeasurement(dev))){
-		printf("Error StartMeasurement() : %d\r\n",status);
-		return 1;
-	}
+	// CrossTalk calibration
+	FixPoint1616_t XTalkCalDistance, XTalkCompensationRateMegaCps;
+	VL53L0X_PerformXTalkCalibration(dev, XTalkCalDistance, &XTalkCompensationRateMegaCps);
 
 	return 0;
 }
 
 uint8_t vl53l0x_PerformMeasurement(VL53L0X_Dev_t* dev, VL53L0X_RangingMeasurementData_t* VL53L0X_RangingMeasurementData){
 	uint8_t status = VL53L0X_ERROR_NONE;
-	uint8_t data_ready = 0;
-
-	/*
-	do{
-		VL53L0X_GetMeasurementDataReady(dev, &data_ready);
-	} while(data_ready != 1);
-	*/
 
 	VL53L0X_WaitDeviceReadyForNewMeasurement(dev, 100);
 

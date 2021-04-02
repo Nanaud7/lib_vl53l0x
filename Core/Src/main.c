@@ -106,13 +106,12 @@ int main(void)
   dev.comms_speed_khz = 400;
   dev.comms_type = 1;
 
-  if(1 == (status = vl53l0x_Initialization(&dev))){
-	  //printf("Error vl53l0x_Initialization() : %d\r\n",status);
-  }
+  vl53l0x_Initialization_Flow(&dev);
 
   while (1)
   {
 	  printf("Distance : %d\r\n",vl53l0x_PerformRangingMeasurement(&dev));
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

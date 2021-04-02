@@ -1,7 +1,7 @@
 Core/Src/retarget.o: ../Core/Src/retarget.c \
- c:\users\arnau\stm32cubeide\workspace_1.5.0\lib_vl53l0x\core\inc\retarget.h \
+ c:\users\arnau\documents\git\ folder\lib_vl53l0x\core\inc\retarget.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- C:/Users/arnau/STM32CubeIDE/workspace_1.5.0/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h \
+ C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
@@ -29,11 +29,11 @@ Core/Src/retarget.o: ../Core/Src/retarget.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 
-c:\users\arnau\stm32cubeide\workspace_1.5.0\lib_vl53l0x\core\inc\retarget.h:
+c:\users\arnau\documents\git\ folder\lib_vl53l0x\core\inc\retarget.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
-C:/Users/arnau/STM32CubeIDE/workspace_1.5.0/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h:
+C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
 
