@@ -37,6 +37,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define nbOfSensors 2
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -98,19 +99,37 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  VL53L0X_Dev_t dev;
-  uint8_t status = 0;
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);
 
-  dev.I2cHandle = &hi2c1;
-  dev.I2cDevAddr = 0x52;
-  dev.comms_speed_khz = 400;
-  dev.comms_type = 1;
+  // PC_0 => XSHUT of sensor 1
+  // PC_1 => XSHUT of sensor 2
 
-  vl53l0x_Initialization_Flow(&dev);
+  VL53L0X_Dev_t dev[nbOfSensors];
+
+  for(int i=0; i<nbOfSensors; i++){
+	  dev[i].I2cHandle = &hi2c1;
+	  dev[i].I2cDevAddr = 0x52;
+	  dev[i].comms_speed_khz = 400;
+	  dev[i].comms_type = 1;
+  }
+
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_SET);
+  HAL_Delay(200);
+  vl53l0x_Initialization_Flow(&dev[0]);
+  vl53l0x_SetDeviceAddress(&dev[0], 0x55);
+  HAL_Delay(200);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET);
+  HAL_Delay(200);
+  vl53l0x_Initialization_Flow(&dev[1]);
+  vl53l0x_SetDeviceAddress(&dev[1], 0x58);
+  HAL_Delay(200);
 
   while (1)
   {
-	  printf("Distance : %d\r\n",vl53l0x_PerformRangingMeasurement(&dev));
+	  for(int i=0; i<nbOfSensors; i++){
+		  printf("Sensor %d : %d\r\n",i, vl53l0x_PerformRangingMeasurement(&dev[i]));
+	  }
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 

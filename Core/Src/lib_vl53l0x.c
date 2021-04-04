@@ -159,3 +159,10 @@ uint16_t vl53l0x_PerformRangingMeasurement(VL53L0X_Dev_t* dev){
 
 	return VL53L0X_RangingMeasurementData.RangeMilliMeter;
 }
+
+uint8_t vl53l0x_SetDeviceAddress(VL53L0X_Dev_t* dev, uint8_t deviceAddress){
+	VL53L0X_SetDeviceAddress(dev, deviceAddress);
+	dev->I2cDevAddr = deviceAddress;
+
+	return 0;
+}

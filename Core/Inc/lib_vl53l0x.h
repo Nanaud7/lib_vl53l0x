@@ -23,6 +23,7 @@
 #define HIGH_SPEED 2
 
 /* Prototypes */
+
 uint8_t vl53l0x_Initialization_Flow(VL53L0X_Dev_t* dev);
 uint8_t vl53l0x_Device_Initialization(VL53L0X_Dev_t* dev);
 uint8_t vl53l0x_Calibration_Data_Load(VL53L0X_Dev_t* dev);
@@ -33,5 +34,7 @@ uint8_t vl53l0x_Manufacturing_Calibration(VL53L0X_Dev_t* dev);
 
 uint8_t vl53l0x_PerformMeasurement(VL53L0X_Dev_t* dev, VL53L0X_RangingMeasurementData_t* VL53L0X_RangingMeasurementData);
 uint16_t vl53l0x_PerformRangingMeasurement(VL53L0X_Dev_t* dev);
+
+uint8_t vl53l0x_SetDeviceAddress(VL53L0X_Dev_t* dev, uint8_t deviceAddress);
 
 #endif /* INC_LIB_VL53L0X_H_ */

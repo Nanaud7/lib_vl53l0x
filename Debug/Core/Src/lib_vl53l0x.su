@@ -6,3 +6,4 @@ lib_vl53l0x.c:77:9:vl53l0x_Range_Profiles	32	static
 lib_vl53l0x.c:117:9:vl53l0x_Manufacturing_Calibration	40	static
 lib_vl53l0x.c:142:9:vl53l0x_PerformMeasurement	24	static
 lib_vl53l0x.c:155:10:vl53l0x_PerformRangingMeasurement	48	static
+lib_vl53l0x.c:163:9:vl53l0x_SetDeviceAddress	16	static
