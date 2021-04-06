@@ -34,6 +34,7 @@ uint8_t vl53l0x_Manufacturing_Calibration(VL53L0X_Dev_t* dev);
 
 uint8_t vl53l0x_PerformMeasurement(VL53L0X_Dev_t* dev, VL53L0X_RangingMeasurementData_t* VL53L0X_RangingMeasurementData);
 uint16_t vl53l0x_PerformRangingMeasurement(VL53L0X_Dev_t* dev);
+uint16_t vl53l0x_PerformRangingMeasurement_IT(VL53L0X_Dev_t* dev);
 
 uint8_t vl53l0x_SetDeviceAddress(VL53L0X_Dev_t* dev, uint8_t deviceAddress);
 

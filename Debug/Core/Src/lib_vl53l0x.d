@@ -1,8 +1,7 @@
 Core/Src/lib_vl53l0x.o: ../Core/Src/lib_vl53l0x.c \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/lib_vl53l0x.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/retarget.h \
+ ../Core/Inc/lib_vl53l0x.h ../Core/Inc/retarget.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h \
+ ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
@@ -39,13 +38,13 @@ Core/Src/lib_vl53l0x.o: ../Core/Src/lib_vl53l0x.c \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform_log.h \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h
 
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/lib_vl53l0x.h:
+../Core/Inc/lib_vl53l0x.h:
 
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/retarget.h:
+../Core/Inc/retarget.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h:
+../Core/Inc/stm32f4xx_hal_conf.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
 

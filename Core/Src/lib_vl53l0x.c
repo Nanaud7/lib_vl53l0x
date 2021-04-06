@@ -17,6 +17,10 @@ uint8_t vl53l0x_Initialization_Flow(VL53L0X_Dev_t* dev){
 	// System settings
 	vl53l0x_System_Settings(dev);
 
+	// GPIOT IT
+	VL53L0X_SetGpioConfig(dev, 0, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING,
+			VL53L0X_GPIOFUNCTIONALITY_NEW_MEASURE_READY, VL53L0X_INTERRUPTPOLARITY_HIGH);
+
 	// Start Measurement
 	VL53L0X_StartMeasurement(dev);
 
@@ -152,10 +156,23 @@ uint8_t vl53l0x_PerformMeasurement(VL53L0X_Dev_t* dev, VL53L0X_RangingMeasuremen
 	return 0;
 }
 
+
 uint16_t vl53l0x_PerformRangingMeasurement(VL53L0X_Dev_t* dev){
 	VL53L0X_RangingMeasurementData_t VL53L0X_RangingMeasurementData;
 
 	vl53l0x_PerformMeasurement(dev, &VL53L0X_RangingMeasurementData);
+
+	return VL53L0X_RangingMeasurementData.RangeMilliMeter;
+}
+
+uint16_t vl53l0x_PerformRangingMeasurement_IT(VL53L0X_Dev_t* dev){
+	uint8_t status = VL53L0X_ERROR_NONE;
+	VL53L0X_RangingMeasurementData_t VL53L0X_RangingMeasurementData;
+
+	if(VL53L0X_ERROR_NONE != (status = VL53L0X_GetRangingMeasurementData(dev, &VL53L0X_RangingMeasurementData))){
+		printf("Error GetRangingMeasurementData() : %d\r\n",status);
+		return 1;
+	}
 
 	return VL53L0X_RangingMeasurementData.RangeMilliMeter;
 }
@@ -166,3 +183,5 @@ uint8_t vl53l0x_SetDeviceAddress(VL53L0X_Dev_t* dev, uint8_t deviceAddress){
 
 	return 0;
 }
+
+

@@ -9,7 +9,7 @@ Drivers/VL53L0X_API/core/src/vl53l0x_api_calibration.o: \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_def.h \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform_log.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h \
+ ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
@@ -57,7 +57,7 @@ C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/in
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h:
+../Core/Inc/stm32f4xx_hal_conf.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
 

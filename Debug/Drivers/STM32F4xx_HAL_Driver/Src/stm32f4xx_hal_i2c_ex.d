@@ -1,7 +1,7 @@
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h \
+ ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
@@ -31,7 +31,7 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o: \
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Core/Inc/stm32f4xx_hal_conf.h:
+../Core/Inc/stm32f4xx_hal_conf.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
 

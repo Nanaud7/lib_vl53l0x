@@ -45,10 +45,10 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="../Core/Inc"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_vl53l0x/Drivers/VL53L0X_API/core/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/lib_vl53l0x/Core/Inc}&quot;"/>
-									<listOptionValue builtIn="false" value="../Core/Inc"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.2041787407" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
