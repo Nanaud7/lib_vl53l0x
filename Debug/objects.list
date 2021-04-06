@@ -3,6 +3,7 @@
 "Core/Src/lib_vl53l0x.o"
 "Core/Src/main.o"
 "Core/Src/retarget.o"
+"Core/Src/servoAX12.o"
 "Core/Src/stm32f4xx_hal_msp.o"
 "Core/Src/stm32f4xx_it.o"
 "Core/Src/sysmem.o"

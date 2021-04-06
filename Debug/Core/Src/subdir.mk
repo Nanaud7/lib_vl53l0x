@@ -9,6 +9,7 @@ C_SRCS += \
 ../Core/Src/lib_vl53l0x.c \
 ../Core/Src/main.c \
 ../Core/Src/retarget.c \
+../Core/Src/servoAX12.c \
 ../Core/Src/stm32f4xx_hal_msp.c \
 ../Core/Src/stm32f4xx_it.c \
 ../Core/Src/sysmem.c \
@@ -21,6 +22,7 @@ OBJS += \
 ./Core/Src/lib_vl53l0x.o \
 ./Core/Src/main.o \
 ./Core/Src/retarget.o \
+./Core/Src/servoAX12.o \
 ./Core/Src/stm32f4xx_hal_msp.o \
 ./Core/Src/stm32f4xx_it.o \
 ./Core/Src/sysmem.o \
@@ -33,6 +35,7 @@ C_DEPS += \
 ./Core/Src/lib_vl53l0x.d \
 ./Core/Src/main.d \
 ./Core/Src/retarget.d \
+./Core/Src/servoAX12.d \
 ./Core/Src/stm32f4xx_hal_msp.d \
 ./Core/Src/stm32f4xx_it.d \
 ./Core/Src/sysmem.d \
@@ -51,6 +54,8 @@ Core/Src/main.o: ../Core/Src/main.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/retarget.o: ../Core/Src/retarget.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/retarget.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/servoAX12.o: ../Core/Src/servoAX12.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/servoAX12.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/stm32f4xx_hal_msp.o: ../Core/Src/stm32f4xx_hal_msp.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F446xx -DDEBUG -c -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Core/Inc -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc" -I"C:/Users/arnau/Documents/Git folder/lib_vl53l0x/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c

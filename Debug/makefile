@@ -57,7 +57,7 @@ main-build: lib_vl53l0x.elf secondary-outputs
 
 # Tool invocations
 lib_vl53l0x.elf: $(OBJS) $(USER_OBJS) C:\Users\arnau\Documents\Git\ folder\lib_vl53l0x\STM32F446RETX_FLASH.ld
-	arm-none-eabi-gcc -o "lib_vl53l0x.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\arnau\Documents\Git folder\lib_vl53l0x\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lib_vl53l0x.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "lib_vl53l0x.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\arnau\Documents\Git folder\lib_vl53l0x\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="lib_vl53l0x.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

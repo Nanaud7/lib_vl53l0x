@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "retarget.h"
 #include "lib_vl53l0x.h"
+#include "servoAX12.h"
 
 /* defines */
 #define nbOfSensors 1

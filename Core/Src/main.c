@@ -90,6 +90,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_I2C1_Init();
+  MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
   RetargetInit(&huart2);
   printf("lib_vl53l0x\r\n");
@@ -122,8 +123,30 @@ int main(void)
   HAL_Delay(200);
   */
 
+  AX12 ax12;
+
+  AX12_Init(&ax12, &huart3, 1, BR_250K);
+  AX12_TorqueE_D(&ax12, TRUE);
+  AX12_setMaxTorque(&ax12,50);
+
+  AX12_setRangeAngle(&ax12,0,300);
+  AX12_setMovingSpeed(&ax12, 114);
+
+  AX12_LED_O_N(&ax12, TRUE);
+
   while (1)
   {
+	  //printf
+
+	  AX12_setPosition(&ax12, 150);
+	  printf("AX12 : %f\r\n",((float)AX12_getPosition(&ax12)*300)/1024);
+	  HAL_Delay(2000);
+	  AX12_setPosition(&ax12, 300);
+	  printf("AX12 : %f\r\n",((float)AX12_getPosition(&ax12)*300)/1024);
+	  HAL_Delay(2000);
+	  AX12_setPosition(&ax12, 0);
+	  printf("AX12 : %f\r\n",((float)AX12_getPosition(&ax12)*300)/1024);
+	  HAL_Delay(4000);
 	  /*
 	  for(int i=0; i<nbOfSensors; i++){
 		  printf("Sensor %d : %d\r\n",i, vl53l0x_PerformRangingMeasurement(&dev[i]));

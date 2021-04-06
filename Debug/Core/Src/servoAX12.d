@@ -1,4 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Core/Src/servoAX12.o: ../Core/Src/servoAX12.c ../Core/Inc/servoAX12.h \
+ ../Core/Inc/usart.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -26,20 +27,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Inc/i2c.h ../Core/Inc/main.h ../Core/Inc/usart.h \
- ../Core/Inc/gpio.h ../Core/Inc/global.h ../Core/Inc/retarget.h \
- ../Core/Inc/lib_vl53l0x.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_api.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_api_strings.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_def.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_types.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_def.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform_log.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h \
- ../Core/Inc/servoAX12.h ../Core/Inc/usart.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+
+../Core/Inc/servoAX12.h:
+
+../Core/Inc/usart.h:
 
 ../Core/Inc/main.h:
 
@@ -98,39 +90,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-
-../Core/Inc/i2c.h:
-
-../Core/Inc/main.h:
-
-../Core/Inc/usart.h:
-
-../Core/Inc/gpio.h:
-
-../Core/Inc/global.h:
-
-../Core/Inc/retarget.h:
-
-../Core/Inc/lib_vl53l0x.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_api.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_api_strings.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_def.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_types.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_def.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform_log.h:
-
-C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h:
-
-../Core/Inc/servoAX12.h:
-
-../Core/Inc/usart.h:

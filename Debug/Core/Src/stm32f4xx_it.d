@@ -37,7 +37,8 @@ Core/Src/stm32f4xx_it.o: ../Core/Src/stm32f4xx_it.c ../Core/Inc/main.h \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform.h \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_def.h \
  C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform_log.h \
- C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h
+ C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h \
+ ../Core/Inc/servoAX12.h ../Core/Inc/usart.h ../Core/Inc/main.h
 
 ../Core/Inc/main.h:
 
@@ -122,3 +123,9 @@ C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl
 C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/platform/inc/vl53l0x_platform_log.h:
 
 C:/Users/arnau/Documents/Git\ folder/lib_vl53l0x/Drivers/VL53L0X_API/core/inc/vl53l0x_device.h:
+
+../Core/Inc/servoAX12.h:
+
+../Core/Inc/usart.h:
+
+../Core/Inc/main.h:
